@@ -4,13 +4,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.List; // Importação adicionada
 
 @Service
 public class GameService {
 
+    private final JdbcTemplate jdbcTemplate;
+
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    public GameService(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
+    public void init() {
+        // Initialize the service, for example, creating necessary tables
+        jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS games (id BIGINT PRIMARY KEY, title VARCHAR(255), genre VARCHAR(255), platform VARCHAR(255), publisher VARCHAR(255), releaseYear INT, rating DOUBLE, description TEXT)");
+    }
 
     public List<Game> getAllGames() {
         String sql = "SELECT * FROM games";

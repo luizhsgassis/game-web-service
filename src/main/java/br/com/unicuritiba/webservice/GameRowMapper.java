@@ -19,4 +19,6 @@ public class GameRowMapper implements RowMapper<Game> {
         game.setDescription(rs.getString("description"));
         return game;
     }
+    
+    
 }
