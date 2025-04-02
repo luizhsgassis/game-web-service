@@ -1,6 +1,8 @@
 package br.com.unicuritiba.webservice;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Column;
@@ -10,6 +12,7 @@ import jakarta.persistence.Column;
 public class Game {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
@@ -25,7 +28,7 @@ public class Game {
     @Column(name = "publisher")
     private String publisher;
 
-    @Column(name = "releaseYear")
+    @Column(name = "releaseyear")
     private Integer releaseYear;
 
     @Column(name = "rating")

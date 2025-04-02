@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
-import java.util.List; // Importação adicionada
+import java.util.List;
 
 @Service
 public class GameService {
@@ -17,8 +17,7 @@ public class GameService {
     }
 
     public void init() {
-        // Initialize the service, for example, creating necessary tables
-        jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS games (id BIGINT PRIMARY KEY, title VARCHAR(255), genre VARCHAR(255), platform VARCHAR(255), publisher VARCHAR(255), releaseYear INT, rating DOUBLE, description TEXT)");
+        jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS games (id BIGINT PRIMARY KEY AUTO_INCREMENT, title VARCHAR(255), genre VARCHAR(255), platform VARCHAR(255), publisher VARCHAR(255), releaseYear INT, rating DOUBLE, description TEXT)");
     }
 
     public List<Game> getAllGames() {
